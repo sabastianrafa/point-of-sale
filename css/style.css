@@ -1,210 +1,339 @@
 *,
 html {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
 /* NAVBAR ATAS ==============================================================*/
 .navbar-atas nav {
-    background-color: #422d6a;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
+  background-color: #422d6a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
 }
 
 .navbar-atas nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
 }
 
 .navbar-atas nav img {
-    width: 70px;
+  width: 70px;
 }
 
 .navbar-atas nav ul li a {
-    text-decoration: none;
-    color: whitesmoke;
-    padding: 10px 10px;
-    letter-spacing: 1.1px;
-    font-size: 18px;
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 10px 10px;
+  letter-spacing: 1.1px;
+  font-size: 18px;
 }
 
 .login a,
 .register a {
-    color: white;
-    text-decoration: none;
-    letter-spacing: 1.1px;
-    font-size: 15px;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1.1px;
+  font-size: 15px;
 }
 
 .login,
 .register {
-    display: flex;
-    align-items: center;
-    margin-left: 15px;
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
 }
 
 .navbar-atas nav ul li a:hover,
 .login a:hover,
 .register a:hover {
-    transition: 300ms;
-    opacity: 70%;
-    color: rgb(183, 183, 183);
+  transition: 300ms;
+  opacity: 70%;
+  color: rgb(183, 183, 183);
 }
 
 .search {
-    display: flex;
-    align-items: center;
-    gap: 2px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
 /* NAVBAR BAWAH ================================================================================*/
 .navbar-bawah nav {
-    background-color: #5b4483;
-    display: flex;
-    align-items: center;
-    padding: 0px 20px;
+  background-color: #5b4483;
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
 }
 
 .menubawah ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .menubawah {
-    width: 70%;
-    margin: 0 auto;
-    padding: 20px;
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .icon {
-    margin-top: 100;
-    font-size: 25px;
-    margin-right: 10px;
-    display: none;
+  margin-top: 100;
+  font-size: 25px;
+  margin-right: 10px;
+  display: none;
 }
 
 .icon a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .navbar-bawah nav ul li a {
-    text-decoration: none;
-    color: whitesmoke;
-    padding: 8px;
-    font-weight: 500;
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 10px;
+  font-weight: 500;
+  border-radius: 20px;
 }
 
 .navbar-bawah nav ul li a:hover {
-    background-color: whitesmoke;
-    transition: 300ms;
-    opacity: 70%;
-    color: blueviolet;
+  background-color: whitesmoke;
+  transition: 300ms;
+  opacity: 70%;
+  color: blueviolet;
+  /* border-radius: 10px; */
+  transition: ease-in-out 0.3s;
+}
+
+/* FOOTER ========================================================== */
+footer {
+  background-color: #422d6a;
+  padding: 20px 0;
+  text-align: center;
+  color: white;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.sosmed-icons a {
+  color: white;
+  font-size: 24px;
+  margin: 0 10px;
+}
+
+.sosmed-icons a:hover {
+  opacity: 0.7;
+}
+
+/* KONTEN UTAMA ===================================================== */
+.konten-utama {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 30px;
+  background-color: #f5f5f5;
+  margin-top: 20px;
+}
+
+.konten-box {
+  max-width: 50%;
+}
+
+.konten-utama h1 {
+  font-size: 2.5rem;
+  color: #422d6a;
+}
+
+.konten-utama p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 20px 0;
+}
+
+.cta-button {
+  padding: 10px 20px;
+  background-color: #422d6a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #5b4483;
+}
+
+.img-konten {
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* TESTIMONI ======================================================== */
+.testimoni {
+  background-color: #5b4483;
+  padding: 50px 0;
+  text-align: center;
+  color: white;
+}
+
+.testimoni h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.testimoni-box {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.testimoni-card {
+  background-color: #422d6a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: left;
+}
+
+.testimoni-card p {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 10px;
+}
+
+.testimoni-card h4 {
+  font-size: 1rem;
+  color: white;
 }
 
 /* MEDIA QUERY UNTUK LAYAR KECIL ================================================================*/
 
-
 @media only screen and (max-width: 900px) {
-    .navbar-atas nav img {
-        width: 50px;
-    }
+  .navbar-atas nav img {
+    width: 50px;
+  }
 
-    .navbar-atas nav ul li a {
-        text-decoration: none;
-        color: whitesmoke;
-        padding: 10px 10px;
-        letter-spacing: 1.1px;
-        font-size: 15px;
-    }
+  .navbar-atas nav ul li a {
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 10px 10px;
+    letter-spacing: 1.1px;
+    font-size: 15px;
+  }
 
-    .login a,
-    .register a {
-        color: white;
-        text-decoration: none;
-        letter-spacing: 1.1px;
-        font-size: 13px;
-    }
+  .login a,
+  .register a {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1.1px;
+    font-size: 13px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
-    .navbar-atas nav ul {
-        display: none;
-    }
+  .navbar-atas nav ul {
+    display: none;
+  }
 
-    .login a,
-    .register a {
-        color: white;
-        text-decoration: none;
-        letter-spacing: 1px;
-        font-size: 12px;
-    }
+  .login a,
+  .register a {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 12px;
+  }
 
-    .menubawah {
-        width: 100%;
-    }
+  .menubawah {
+    width: 100%;
+  }
 
-    .navbar-atas nav img {
-        width: 40px;
-    }
+  .navbar-atas nav img {
+    width: 40px;
+  }
 
-    /* .navbar-bawah nav ul {
+  /* .navbar-bawah nav ul {
         flex-direction: column;
     } */
 
-    .navbar-bawah nav ul li a {
-        text-decoration: none;
-        color: whitesmoke;
-        padding: 0px;
-        font-size: small;
-    }
+  .navbar-bawah nav ul li a {
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 0px;
+    font-size: small;
+  }
+
+  .konten-utama {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .konten-box {
+    max-width: 100%;
+  }
+
+  .img-konten {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .testimoni-box {
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 400px) {
-    .navbar-atas nav img {
-        display: none;
-    }
+  .navbar-atas nav img {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 350px) {
-    .navbar-bawah nav ul {
-        flex-direction: column;
-    }
+  .navbar-bawah nav ul {
+    flex-direction: column;
+  }
 
-    .login a,
-    .register a {
-        display: none;
-    }
+  .login a,
+  .register a {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 240px) {
-    .search {
-        display: none;
-    }
+  .search {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 110px) {
-    .navbar-atas {
-        display: none;
-    }
+  .navbar-atas {
+    display: none;
+  }
 
-    .navbar-bawah {
-        display: none;
-    }
+  .navbar-bawah {
+    display: none;
+  }
 
-    body {
-        background-color: #5b4483;
-    }
+  body {
+    background-color: #5b4483;
+  }
 }

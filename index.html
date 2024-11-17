@@ -1,107 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="icon" href="assets/iconbg.png" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  </head>
+</head>
 
-  <body>
-    <div class="navbar-atas">
-      <nav>
-        <img src="assets/icon.png" alt="icon" />
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="assets/icon.png" alt="icon" />
+                </div>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="admin.html">Dashboard</a></li>
+                    <li><a href="#">Produk</a></li>
+                    <li><a href="#">Penjualan</a></li>
+                    <li><a href="#">Kontak Pelanggan</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <ul>
-          <li>
-            <a href="#">Layanan Pelanggan</a>
-          </li>
-          <li>
-            <a href="#">Kontak Penjualan</a>
-          </li>
-        </ul>
+        <main>
+            <section class="konten-utama">
+                <div class="konten-box">
+                    <h1>Selamat Datang di Platform Manajemen Pelanggan</h1>
+                    <p>
+                        Kami menyediakan layanan untuk mempermudah bisnis
+                        Anda dalam mengelola pelanggan, penjualan,
+                        pemasaran, dan pelaporan. Dengan sistem yang
+                        terintegrasi, Anda dapat meningkatkan produktivitas
+                        dan efisiensi.
+                    </p>
+                    <button class="cta-button">
+                        Pelajari Lebih Lanjut
+                    </button>
+                </div>
+                <img src="assets/businessimage.jpg" alt="Business Image" class="img-konten" />
+            </section>
+        </main>
 
-        <div class="search">
-          <input type="text" />
-          <button>Search</button>
-        </div>
-
-        <div class="login">
-          <a href="login.html">Login</a>
-        </div>
-
-        <div class="register">
-          <a href="register.html">Register</a>
-        </div>
-      </nav>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Point of Sale. All rights reserved.</p>
+                <div class="sosmed-icons">
+                    <a href="#"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <div class="navbar-bawah">
-      <nav>
-        <div class="icon">
-          <a href="#"><i class="ph ph-list"></i></a>
-        </div>
-        <div class="menubawah">
-          <ul>
-            <li><a href="#">Pemasaran </a></li>
-            <li><a href="#">Penjualan </a></li>
-            <li><a href="#">Laporan </a></li>
-            <li><a href="#">Kontak </a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+</body>
 
-    <main>
-      <section class="konten-utama">
-        <div class="konten-box">
-          <h1>Selamat Datang di Platform Manajemen Pelanggan</h1>
-          <p>
-            Kami menyediakan layanan untuk mempermudah bisnis Anda dalam
-            mengelola pelanggan, penjualan, pemasaran, dan pelaporan. Dengan
-            sistem yang terintegrasi, Anda dapat meningkatkan produktivitas dan
-            efisiensi.
-          </p>
-          <button class="cta-button">Pelajari Lebih Lanjut</button>
-        </div>
-        <img
-          src="assets/businessimage.jpg"
-          alt="Business Image"
-          class="img-konten" />
-      </section>
-
-      <!-- Testimoni -->
-      <section class="testimoni">
-        <h2>Testimoni Pelanggan</h2>
-        <div class="testimoni-box">
-          <div class="testimoni-card">
-            <p>
-              "Layanan yang sangat membantu kami dalam mengelola penjualan. Tim
-              kami menjadi lebih produktif!"
-            </p>
-            <h4>- Budi, CEO Toko XYZ</h4>
-          </div>
-          <div class="testimoni-card">
-            <p>
-              "Aplikasi ini mudah digunakan dan memberikan laporan yang sangat
-              rinci untuk bisnis kami."
-            </p>
-            <h4>- Sari, Manajer Penjualan</h4>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="footer-content">
-        <p>&copy; 2024 Point of Sale. All rights reserved.</p>
-        <div class="sosmed-icons">
-          <a href="#"><i class="ph ph-facebook-logo"></i></a>
-          <a href="#"><i class="ph ph-instagram-logo"></i></a>
-          <a href="#"><i class="ph ph-twitter-logo"></i></a>
-        </div>
-      </div>
-    </footer>
-  </body>
 </html>

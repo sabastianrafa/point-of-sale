@@ -1,101 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Page</title>
-    <link rel="stylesheet" href="css/login.css" />
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                background-color: #f5f5f5;
+            }
+            .container {
+                display: flex;
+                max-width: 900px;
+                padding: 20px;
+            }
+            .login-container {
+                background: white;
+                padding: 40px;
+                border-radius: 8px 0px 0px 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .login-container h2 {
+                margin-bottom: 20px;
+                color: #333;
+            }
+            .login-container input {
+                width: 90%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .login-container button {
+                width: 100%;
+                padding: 10px;
+                background-color: #422d6a;
+                color: white;
+                border: none;
+                margin-top: 10px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            .login-container button:hover {
+                background-color: #422d6ada;
+            }
+            .login-container a {
+                font-size: small;
+                text-decoration: none;
+            }
 
-  <body>
-    <div class="container">
-      <div class="login-box">
-        <div class="login">
-          <h2>Login</h2>
-          <form action="#">
-            <div class="input-group">
-              <input type="text" placeholder="Type your username" required />
+            .info-container {
+                background-color: #422d6a;
+                padding: 40px;
+                text-align: center;
+                border-radius: 0px 8px 8px 0px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+            }
+
+            .info-container h1 {
+                color: #ffffff;
+            }
+
+            .info-container p {
+                color: #ffffff;
+                line-height: 1.5;
+            }
+
+            .info-container img {
+                width: 80%;
+                height: auto;
+                pointer-events: none;
+            }
+
+            @media (max-width: 800px) {
+                .container {
+                    display: grid;
+                }
+                .login-container {
+                    border-radius: 8px 8px 0px 0px;
+                }
+                .login-container input {
+                    width: 96%;
+                }
+                .info-container {
+                    border-radius: 0px 0px 8px 8px;
+                }
+            }
+
+            @media (max-width: 260px) {
+                .info-container {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Login Container -->
+            <div class="login-container">
+                <h2>Login</h2>
+                <form action="/admin.html" method="#">
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Username"
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                        required
+                    />
+                    <a href="#">Lupa Sandi?</a>
+                    <button type="submit" id="loginBtn">Login</button>
+                </form>
+                <p style="font-size: small">
+                    Belum Memiliki Akun? <a href="register.html">Register</a>
+                </p>
             </div>
 
-            <div class="input-group">
-              <input
-                type="password"
-                placeholder="Type your password"
-                required />
-              <span class="eye-icon">🙈</span>
+            <!-- Info Box -->
+            <div class="info-container">
+                <div class="info">
+                    <h1>Welcome to Point of Sale</h1>
+                    <p>
+                        Platform untuk manajemen hubungan pelanggan (CRM),
+                        pemasaran, penjualan, dan layanan pelanggan.
+                    </p>
+                    <img src="assets/loginimg.png" alt="Logo Point of Sale" />
+                </div>
             </div>
-
-            <a href="#" class="forgot-password">Lupa Sandi?</a>
-            <button type="submit">Login</button>
-            <p class="or">Or Sign Up Using</p>
-            <div class="social-icons">
-              <span class="icon red"></span>
-              <span class="icon blue"></span>
-              <span class="icon green"></span>
-            </div>
-            <p class="signup">
-              Belum mempunyai akun? <a href="register.html">signup</a>
-            </p>
-          </form>
         </div>
-      </div>
-      <div class="info-box">
-        <div class="info">
-          <h1>welcome to point of sale</h1>
-          <p>
-            platform untuk manajemen hubungan pelanggan (CRM), pemasaran,
-            penjualan, dan layanan pelanggan.
-          </p>
-          <img src="assets/loginimg.png" alt="POS Illustration" />
-        </div>
-      </div>
-    </div>
 
-    <!-- Elemen toast -->
-    <div id="toast" class="toast">Login Berhasil!</div>
+        <script>
+            // Ambil elemen tombol dan input
+            const button = document.getElementById("loginBtn");
+            const usernameInput = document.getElementById("username");
+            const passwordInput = document.getElementById("password");
 
-    <script>
-      // Mendapatkan elemen-elemen DOM yang dibutuhkan
-      const eyeIcon = document.querySelector(".eye-icon");
-      const passwordInput = document.querySelector('input[type="password"]');
-      const loginForm = document.querySelector("form");
+            function showMessage() {
+                const username = usernameInput.value;
+                console.log("Login Berhasil");
+                // Redirect ke halaman dashboard
+                window.location.href = "/admin.html"; // Ganti dengan URL dashboard Anda
+            }
 
-      // Fungsi toggle untuk mengubah antara teks password terlihat atau tersembunyi
-      eyeIcon.addEventListener("click", () => {
-        if (passwordInput.type === "password") {
-          passwordInput.type = "text";
-          eyeIcon.textContent = "🙉";
-        } else {
-          passwordInput.type = "password";
-          eyeIcon.textContent = "🙈";
-        }
-      });
+            button.addEventListener("click", function (event) {
+                // Cegah form di-submit jika validasi gagal
+                event.preventDefault();
 
-      // Fungsi untuk menampilkan toast
-      function showToast(message) {
-        const toast = document.getElementById("toast");
-        toast.textContent = message; // Set pesan untuk toast
-        toast.className = "toast show"; // Tambahkan kelas 'show' untuk memunculkan toast
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value.trim();
 
-        // Setelah 3 detik, hilangkan toast
-        setTimeout(() => {
-          toast.className = toast.className.replace("show", "");
-        }, 3000);
-      }
-
-      // Fungsi untuk menangani submit form
-      loginForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const username = document.querySelector('input[type="text"]').value;
-        const password = passwordInput.value;
-
-        if (username && password) {
-          showToast("Login Berhasil!");
-        } else {
-          showToast("Silakan masukkan username dan password");
-        }
-      });
-    </script>
-  </body>
+                // Validasi input
+                if (!username || !password) {
+                    alert("Username dan password harus diisi!");
+                } else {
+                    showMessage();
+                }
+            });
+        </script>
+    </body>
 </html>

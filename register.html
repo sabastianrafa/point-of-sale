@@ -1,63 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register Page</title>
-    <link rel="stylesheet" href="css/register.css" />
-  </head>
+    <title>register Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
 
-  <body>
+        .container {
+            display: flex;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .register-container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px 0px 0px 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .register-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .register-container input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .register-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #422d6a;
+            color: white;
+            border: none;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .register-container button:hover {
+            background-color: #422d6ada;
+        }
+
+        .register-container a {
+            font-size: small;
+            text-decoration: none;
+        }
+
+        .info-container {
+            background-color: #422d6a;
+            padding: 40px;
+            text-align: center;
+            border-radius: 0px 8px 8px 0px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Optional: Add a shadow */
+        }
+
+        .info-container h1 {
+            color: #ffffff;
+        }
+
+        .info-container p {
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        .info-container img {
+            width: 80%;
+            height: auto;
+            pointer-events: none;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                display: grid;
+            }
+
+            .register-container {
+                border-radius: 8px 8px 0px 0px;
+            }
+
+            .register-container input {
+                width: 96%;
+            }
+
+            .info-container {
+                border-radius: 0px 0px 8px 8px;
+            }
+        }
+
+        @media (max-width: 260px) {
+            .info-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
     <div class="container">
-      <div class="register-box">
-        <div class="register">
-          <h2>Register</h2>
-          <form action="login.html">
-            <div class="input-group">
-              <input type="text" placeholder="Type your username" required />
-            </div>
-
-            <div class="input-group">
-              <input type="email" placeholder="Type your email" required />
-            </div>
-
-            <div class="input-group">
-              <input
-                type="password"
-                placeholder="Type your password"
-                required />
-            </div>
-
-            <div class="input-group">
-              <input
-                type="password"
-                placeholder="Confirm your password"
-                required />
-            </div>
-
-            <button type="submit">Register</button>
-            <p class="or">Or Sign Up Using</p>
-            <div class="social-icons">
-              <span class="icon red"></span>
-              <span class="icon blue"></span>
-              <span class="icon green"></span>
-            </div>
-            <p class="signup">
-              Sudah mempunyai akun? <a href="login.html">login</a>
+        <!-- register Container -->
+        <div class="register-container">
+            <h2>Register</h2>
+            <form action="/login.html" method="#">
+                <input type="text" name="username" id="username" placeholder="Username" required />
+                <input type="email" name="email" id="email" placeholder="Email" required />
+                <input type="password" name="password" id="password" placeholder="Password" required />
+                <input type="password" name="password" id="password" placeholder="Confirm Password " required />
+                <button type="submit" id="registerBtn">Register</button>
+            </form>
+            <p style="font-size: small">
+                Sudah Memiliki Akun? <a href="login.html">Login</a>
             </p>
-          </form>
         </div>
-      </div>
-      <div class="info-box">
-        <div class="info">
-          <h1>Welcome to Point of Sale</h1>
-          <p>
-            Platform untuk manajemen hubungan pelanggan (CRM), pemasaran,
-            penjualan, dan layanan pelanggan.
-          </p>
-          <img src="assets/iconbg.png" alt="POS Illustration" />
+
+        <!-- Info Box -->
+        <div class="info-container">
+            <div class="info">
+                <h1>Welcome to Point of Sale</h1>
+                <p>
+                    Platform untuk manajemen hubungan pelanggan (CRM),
+                    pemasaran, penjualan, dan layanan pelanggan.
+                </p>
+                <img src="assets/iconbg.png" alt="Logo Point of Sale" />
+            </div>
         </div>
-      </div>
     </div>
-  </body>
+
+    <script>
+        // Ambil elemen tombol dan input
+        const button = document.getElementById("registerBtn");
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+
+        function showMessage() {
+            const username = usernameInput.value;
+            console.log("register Berhasil");
+            // Redirect ke halaman dashboard
+            window.location.href = "/login.html"; // Ganti dengan URL dashboard Anda
+        }
+
+        button.addEventListener("click", function (event) {
+            // Cegah form di-submit jika validasi gagal
+            event.preventDefault();
+
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            // Validasi input
+            if (!username || !password) {
+                alert("Semua data harus diisi!");
+            } else {
+                showMessage();
+            }
+        });
+    </script>
+</body>
+
 </html>

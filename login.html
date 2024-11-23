@@ -59,7 +59,7 @@
                 padding: 40px;
                 text-align: center;
                 border-radius: 0px 8px 8px 0px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
             .info-container h1 {
@@ -75,6 +75,49 @@
                 width: 80%;
                 height: auto;
                 pointer-events: none;
+            }
+
+            .popup {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                border-radius: 8px;
+                text-align: center;
+                z-index: 1000;
+                display: none;
+            }
+
+            .popup button {
+                padding: 10px 20px;
+                margin: 5px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .popup .confirm {
+                background-color: #28a745;
+                color: white;
+            }
+
+            .popup .cancel {
+                background-color: #dc3545;
+                color: white;
+            }
+
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
             }
 
             @media (max-width: 800px) {
@@ -104,7 +147,7 @@
             <!-- Login Container -->
             <div class="login-container">
                 <h2>Login</h2>
-                <form action="/admin.html" method="#">
+                <form id="loginForm">
                     <input
                         type="text"
                         name="username"
@@ -140,32 +183,52 @@
             </div>
         </div>
 
+        <!-- Popup Confirmation -->
+        <div class="overlay" id="overlay"></div>
+        <div class="popup" id="popup">
+            <h3>Konfirmasi Login</h3>
+            <p id="confirmationText"></p>
+            <button class="confirm" id="confirmBtn">Konfirmasi</button>
+            <button class="cancel" id="cancelBtn">Batal</button>
+        </div>
+
         <script>
-            // Ambil elemen tombol dan input
-            const button = document.getElementById("loginBtn");
+            const loginForm = document.getElementById("loginForm");
             const usernameInput = document.getElementById("username");
             const passwordInput = document.getElementById("password");
+            const popup = document.getElementById("popup");
+            const overlay = document.getElementById("overlay");
+            const confirmBtn = document.getElementById("confirmBtn");
+            const cancelBtn = document.getElementById("cancelBtn");
+            const confirmationText =
+                document.getElementById("confirmationText");
 
-            function showMessage() {
-                const username = usernameInput.value;
-                console.log("Login Berhasil");
-                // Redirect ke halaman dashboard
-                window.location.href = "/admin.html"; // Ganti dengan URL dashboard Anda
-            }
-
-            button.addEventListener("click", function (event) {
-                // Cegah form di-submit jika validasi gagal
-                event.preventDefault();
+            loginForm.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent form submission
 
                 const username = usernameInput.value.trim();
                 const password = passwordInput.value.trim();
 
-                // Validasi input
                 if (!username || !password) {
                     alert("Username dan password harus diisi!");
                 } else {
-                    showMessage();
+                    // Tampilkan popup
+                    confirmationText.textContent = `Username: ${username}`;
+                    popup.style.display = "block";
+                    overlay.style.display = "block";
                 }
+            });
+
+            confirmBtn.addEventListener("click", function () {
+                // Konfirmasi login
+                console.log("Login Berhasil");
+                window.location.href = "/admin.html";
+            });
+
+            cancelBtn.addEventListener("click", function () {
+                // Tutup popup
+                popup.style.display = "none";
+                overlay.style.display = "none";
             });
         </script>
     </body>

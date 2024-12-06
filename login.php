@@ -183,51 +183,56 @@
         </div>
     </div>
 
-    <!-- Popup Confirmation -->
-    <div class="overlay" id="overlay"></div>
-    <div class="popup" id="popup">
-        <h3>Konfirmasi Login</h3>
-        <p id="confirmationText"></p>
-        <button class="confirm" id="confirmBtn">Konfirmasi</button>
-        <button class="cancel" id="cancelBtn">Batal</button>
-    </div>
-
     <script>
+        // Fungsi untuk menyimpan cookie
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000); // Waktu kedaluwarsa
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = `${name}=${value};${expires};path=/`;
+        }
+
+        // Fungsi untuk membaca cookie
+        function getCookie(name) {
+            const cookies = document.cookie.split("; ");
+            for (let cookie of cookies) {
+                const [key, value] = cookie.split("=");
+                if (key === name) {
+                    return decodeURIComponent(value);
+                }
+            }
+            return null;
+        }
+
+        // Elemen HTML
         const loginForm = document.getElementById("loginForm");
         const usernameInput = document.getElementById("username");
-        const passwordInput = document.getElementById("password");
-        const popup = document.getElementById("popup");
-        const overlay = document.getElementById("overlay");
-        const confirmBtn = document.getElementById("confirmBtn");
-        const cancelBtn = document.getElementById("cancelBtn");
-        const confirmationText = document.getElementById("confirmationText");
 
+        // Saat halaman dimuat, isi otomatis username jika ada di cookies
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedUsername = getCookie("username");
+            if (savedUsername) {
+                usernameInput.value = savedUsername; // Isi input username
+            }
+        });
+
+        // Event listener untuk form login
         loginForm.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault(); // Mencegah submit default
 
             const username = usernameInput.value.trim();
-            const password = passwordInput.value.trim();
+            const password = document.getElementById("password").value.trim();
 
             if (!username || !password) {
                 alert("Username dan password harus diisi!");
             } else {
-                // Tampilkan popup
-                confirmationText.textContent = `Username: ${username}`;
-                popup.style.display = "block";
-                overlay.style.display = "block";
+                // Simpan username ke cookies (berlaku selama 7 hari)
+                setCookie("username", username, 7);
+
+                // Redirect ke halaman admin
+                console.log("Login berhasil. Username disimpan di cookies.");
+                window.location.href = "admin.php";
             }
-        });
-
-        confirmBtn.addEventListener("click", function () {
-            // Konfirmasi login
-            console.log("Login Berhasil");
-            window.location.href = "admin.php";
-        });
-
-        cancelBtn.addEventListener("click", function () {
-            // Tutup popup
-            popup.style.display = "none";
-            overlay.style.display = "none";
         });
     </script>
 </body>

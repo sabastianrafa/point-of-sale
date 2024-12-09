@@ -1,3 +1,33 @@
+<?php
+session_start();
+
+// Tentukan waktu kedaluwarsa sesi (12 jam dalam detik)
+$session_timeout = 12 * 60 * 60; // 12 jam = 12 * 60 * 60 detik
+
+// Cek apakah sesi 'login_time' sudah ada
+if (isset($_SESSION['login_time'])) {
+    // Hitung selisih waktu antara sekarang dan waktu login
+    $elapsed_time = time() - $_SESSION['login_time'];
+
+    // Jika sudah lebih dari 12 jam, logout otomatis
+    if ($elapsed_time > $session_timeout) {
+        // Hapus sesi dan redirect ke halaman login
+        session_unset();
+        session_destroy();
+
+        // Hapus status login di localStorage
+        echo "<script>
+                localStorage.removeItem('logged_in');
+                window.location.href = 'login.php'; // Redirect ke halaman login
+              </script>";
+        exit(); // Pastikan script berhenti setelah logout
+    }
+}
+
+// Perbarui waktu login setiap kali halaman dimuat
+$_SESSION['login_time'] = time();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,12 +47,14 @@
                     <img src="assets/icon.png" alt="icon" />
                 </div>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="admin.php">Dashboard</a></li>
-                    <li><a href="#">Produk</a></li>
-                    <li><a href="#">Penjualan</a></li>
-                    <li><a href="#">Kontak Pelanggan</a></li>
-                    <li><a href="login.php">Login</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="kontak.php">Kontak</a></li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li><a href="logout.php">Logout</a></li>
+                    <?php else: ?>
+                        <li><a href="login.php" id="login-button">Login</a></li>
+                    <?php endif; ?>
                 </ul>
             </nav>
         </header>
@@ -59,5 +91,18 @@
     </div>
 
 </body>
+
+<script>
+    // Menggunakan localStorage hanya jika Anda menginginkan solusi berbasis sisi klien (misalnya untuk aplikasi tanpa login berbasis sesi).
+    // Pastikan hanya mengubah localStorage jika login berhasil, dan hapus saat logout.
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Cek status login di sesi (jika menggunakan sesi PHP) atau di localStorage
+        if (localStorage.getItem('logged_in') === 'true') {
+            document.getElementById('login-button').innerHTML = 'Logout';
+            document.getElementById('login-button').setAttribute('href', 'logout.php');
+        }
+    });
+</script>
 
 </html>
